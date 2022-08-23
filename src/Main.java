@@ -4,11 +4,12 @@ public class Main {
 
         Order book = new Order(true, 9.99, "Express", "ship50");
         Order chemistrySet = new Order(false, 72.50, "Regular", "freeShipping");
-        Order mathsBook = new Order(true, 24.32, "Express");
+        Order mathsBook = new Order(true, 24.32, "Next Day");
 
 
         book.ship();
         chemistrySet.ship();
+        mathsBook.ship();
 
     }
 }

@@ -19,15 +19,25 @@ public class Order {
     }
 
     public void ship() {
+        String couponCode = coupon;
         if (isFilled) {
-            System.out.println("Shipping");
+            System.out.println("Order is in transit!");
         } else {
-            System.out.println("Order not ready");
+            System.out.println("Order not ready!");
         }
+
 
         double shippingCost = calculateShipping();
 
-        System.out.println("Shipping cost: ");
+            if (coupon != null) {
+                if (couponCode.equals("freeShipping")) {
+                    shippingCost = 0;
+                } else if (couponCode.equals("ship50")) {
+                    shippingCost = 0.50;
+                }
+            }
+
+        System.out.print("Shipping cost: £");
         System.out.println(shippingCost);
     }
 
@@ -40,8 +50,11 @@ public class Order {
             case "Express":
                 shippingCost = 1.75;
                 break;
+            case "Next Day":
+                shippingCost = 2.50;
+                break;
             default:
-                shippingCost = .50;
+                shippingCost = 0.75;
         }
         return shippingCost;
     }
